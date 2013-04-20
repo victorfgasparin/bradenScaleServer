@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition template="/WEB-INF/templates/default.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:a4j="http://richfaces.org/a4j"
+                xmlns:rich="http://richfaces.org/rich"
+                xmlns:my="http://java.sun.com/jsf/composite/components">
+    <ui:define name="content">
+        <h:form>
+        
+        		<h:panelGrid columns="2">
+	        		<h:graphicImage name="add-photo.jpg" library="img" />
+	        		
+	        		<h:panelGrid columns="1" columnClasses="titleCell">
+		        		<h:outputLabel id="name" value="#{paciente.nome}">
+				            
+				        </h:outputLabel >
+				        
+				        <h:outputLabel id="sexo" value="#{paciente.sexoDesc}">
+				            
+				        </h:outputLabel >
+				        
+						<h:outputLabel id="dataNasc" value="#{paciente.dataNasc}" />
+				                
+				        <h:outputLabel  id="email" value="#{paciente.email}">
+				            
+				        </h:outputLabel >
+				        
+				        <h:outputLabel  id="phoneNumber" value="#{paciente.telefone}">
+				            
+				        </h:outputLabel >
+				        
+				        <h:outputLabel id="prontuario" value="#{paciente.prontuario}">
+				            
+				        </h:outputLabel>
+				        
+				        
+		        	</h:panelGrid>		
+	        	</h:panelGrid>
+        
+        	<rich:collapsiblePanel id="listaBraden" header="Hostorico Escala de Braden" headerClass="header" title="Clique para expandir">
+             <h:panelGroup rendered="#{empty paciente.braden}">
+                <em>Nenhum exame realizado.</em>
+             </h:panelGroup>
+	        <rich:dataTable id="memberTable" var="_braden" value="#{paciente.braden}" rendered="#{not empty paciente.braden}" style="width : 100%">
+	                   <rich:column id="paciente_name">
+	                      <f:facet name="header">Date</f:facet>
+	                      #{_braden.data}
+	                   </rich:column>
+	                   <rich:column id="paciente_sensorial">
+	                      <f:facet name="header">Percepcao</f:facet>
+	                      #{_braden.percepcaoSensorial}
+	                   </rich:column>
+	                   <rich:column id="paciente_umidade">
+	                      <f:facet name="header">umidade</f:facet>
+	                      #{_braden.umidade}
+	                   </rich:column>
+	                   <rich:column id="paciente_atividade">
+	                      <f:facet name="header">Atividade</f:facet>
+	                      #{_braden.atividade}
+	                   </rich:column>
+	                   <rich:column id="paciente_mobilidade">
+	                      <f:facet name="header">Mobilidade</f:facet>
+	                      #{_braden.mobilidade}
+	                   </rich:column>
+	                   <rich:column id="paciente_nutricao">
+	                      <f:facet name="header">Nutricao</f:facet>
+	                      #{_braden.nutricao}
+	                   </rich:column>
+	                   <rich:column id="paciente_friccao">
+	                      <f:facet name="header">Friccao</f:facet>
+	                      #{_braden.friccao}
+	                   </rich:column>
+	                </rich:dataTable>
+	          </rich:collapsiblePanel>
+         </h:form>
+    </ui:define>
+</ui:composition>

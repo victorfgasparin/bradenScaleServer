@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition template="/WEB-INF/templates/default.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:a4j="http://richfaces.org/a4j"
+                xmlns:rich="http://richfaces.org/rich"
+                xmlns:my="http://java.sun.com/jsf/composite/components">
+    <ui:define name="content">
+        
+        <script>
+			$(function() {
+				$( "#dialog" ).dialog({
+					autoOpen: false,
+					show: {
+						effect: "bounce",
+						duration: 1000
+					},
+					hide: {
+						effect: "explode",
+						duration: 1000
+					}
+				});
+			});
+
+			function mostraMensagemResultado(){
+				var status = $( "[id$='statusOperacao']").val();
+				if (status == "OK"){
+					$( "#dialog" ).dialog( "open" );
+				}
+				
+			}
+		</script>
+		
+        <h:form>		
+			<div id="dialog" title="Operacao">
+				<rich:messages id="mensagemGlobal" globalOnly="true"/>
+				<p>Operacao realizado com sucesso!</p>
+			</div>
+		
+	        <rich:panel id="novoPacientePanel" header="Cadastro de Paciente" style="position: relative;" >
+	        	<h:inputHidden id="statusOperacao" value="#{pacienteController.statusOperacao}" />
+	        	
+	        	<h:panelGrid columns="2">
+	        		<h:graphicImage name="add-photo.jpg" library="img" />
+	        		
+	        		<h:panelGrid columns="3" columnClasses="titleCell">
+		        		<h:outputLabel for="name" value="Name:"/>
+		        		<h:inputText id="name" value="#{novoPaciente.nome}">
+				            <rich:validator/>
+				        </h:inputText>
+				        <rich:message for="name" errorClass="invalid"/>
+				        
+				        
+				        <h:outputLabel for="sexo" value="Sexo:"/>
+				        <h:selectOneRadio id="sexo" value="#{novoPaciente.sexo}" styleClass="labelSexo">
+				        	<f:selectItem itemValue="M" itemLabel="Masculino"></f:selectItem>
+				        	<f:selectItem itemValue="F" itemLabel="Feminino"></f:selectItem>
+				        </h:selectOneRadio>
+				        <rich:message for="sexo" errorClass="invalid"/>
+						
+						<h:outputLabel for="dataNasc" value="Dt Nascimento:"/>
+						<rich:calendar id="dataNasc" value="#{novoPaciente.dataNasc}" />
+				        <rich:message for="dataNasc" errorClass="invalid"/>
+				                
+				        <h:outputLabel for="email" value="Email:"/>
+				        <h:inputText id="email" value="#{novoPaciente.email}">
+				            <rich:validator/>
+				        </h:inputText>
+				        <rich:message for="email" errorClass="invalid"/>
+				
+				        <h:outputLabel for="phoneNumber" value="Phone #:"/>
+				        <h:inputText id="phoneNumber" value="#{novoPaciente.telefone}">
+				            <rich:validator/>
+				        </h:inputText>
+				        <rich:message for="phoneNumber" errorClass="invalid"/>
+				        
+				        <h:outputLabel for="prontuario" value="Prontuario:"/>
+				        <h:inputText id="prontuario" value="#{novoPaciente.prontuario}">
+				            <rich:validator/>
+				        </h:inputText>
+				        <rich:message for="prontuario" errorClass="invalid"/>
+				        
+				        <h:outputLabel for="enfermeiro" value="Enfermeiro:"/>
+				        <h:inputText id="enfermeiro" value="#{novoPaciente.enfermeiro}">
+				            <rich:validator/>
+				        </h:inputText>
+				        <rich:message for="enfermeiro" errorClass="invalid"/>
+		        	</h:panelGrid>		
+	        	</h:panelGrid>
+	        	
+	       		<h:outputLabel for="comentarios" value="Comentarios:"/>
+		        <h:inputTextarea id="comentarios" value="#{novoPaciente.descricao}" style="width: 100%; height: 200px;">
+		            <rich:validator/>
+		        </h:inputTextarea>
+		        <rich:message for="enfermeiro" errorClass="invalid"/>
+		        
+		        
+		        <a4j:commandButton id="cadastra" styleClass="cadastra" action="#{pacienteController.cadastra}" value="Cadastrar"
+	                               execute="novoPacientePanel" render="novoPacientePanel, mensagemGlobal"
+	                               oncomplete="mostraMensagemResultado()"/>
+	        </rich:panel>
+        
+        </h:form>
+    </ui:define>
+</ui:composition>

@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+   	<title>RichFaces Starter Application</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <h:outputStylesheet name="screen.css" library="css"/>
+    <h:outputStylesheet name="app_main.css" library="css"/>
+    <link rel="stylesheet" href="css/jqueryui/jquery.ui.all.css"/>
+    
+    
+   	
+   	<link rel="stylesheet" href="css/demos.css"/>
+    
+   	<style>
+		.toggler { width: 500px; height: 200px; position: relative; }
+		#button { padding: .5em 1em; text-decoration: none; }
+		#effect { width: 240px; height: 135px; padding: 0.4em; position: relative; background: #fff; }
+		#effect h3 { margin: 0; padding: 0.4em; text-align: center; }
+	</style>
+</h:head>
+<h:body>
+	<script src="js/jqueryui/jquery.ui.effect.js"></script>
+    <script src="js/jqueryui/jquery.ui.core.js"></script>
+	<script src="js/jqueryui/jquery.ui.widget.js"></script>
+	<script src="js/jqueryui/jquery.ui.mouse.js"></script>
+	<script src="js/jqueryui/jquery.ui.draggable.js"></script>
+	<script src="js/jqueryui/jquery.ui.position.js"></script>
+	<script src="js/jqueryui/jquery.ui.resizable.js"></script>
+	<script src="js/jqueryui/jquery.ui.button.js"></script>
+	<script src="js/jqueryui/jquery.ui.dialog.js"></script>
+	<script src="js/jqueryui/jquery.ui.effect-blind.js"></script>
+	<script src="js/jqueryui/jquery.ui.effect-explode.js"></script>
+	<script src="js/jqueryui/jquery.ui.effect-bounce.js"></script>
+    
+    
+    
+    <div id="container">
+        <div class="dualbrand">
+            <h:graphicImage id="logo_usp" name="usp.jpg" library="img"/>
+            <h:graphicImage id="logo_each" name="each.jpg" library="img"/>
+        </div>
+        <div id="aside">
+            <ui:include src="/resources/includes/about.xhtml"/>
+        </div>
+        <div id="content">
+            <ui:insert name="content">
+                [Template content will be inserted here]
+            </ui:insert>
+        </div>
+    </div>
+</h:body>
+</html>

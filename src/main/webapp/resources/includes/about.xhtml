@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:a4j="http://richfaces.org/a4j"
+      xmlns:rich="http://richfaces.org/rich"
+      xmlns:my="http://java.sun.com/jsf/composite/components">
+
+<ui:composition>
+    <rich:accordion switchType="client">
+    	<rich:accordionItem header="Consultas">
+		    <ul>
+		        <li><a href="#{request.contextPath}/pacientes/lista.jsf">Pacientes</a></li>
+		        <li><a href="#{request.contextPath}/pacientes/lista.jsf">Enfermeiros</a></li>
+		        <li><a href="#{request.contextPath}/pacientes/lista.jsf">Avaliacoes</a></li>
+		    </ul>
+    	</rich:accordionItem>
+    	<rich:accordionItem header="Cadastros">
+    		<ul>
+    		<li><a href="#{request.contextPath}/pacientes.jsf">Pacientes</a></li>
+		    <li><a href="#{request.contextPath}/pacientes.jsf">Enfermeiros</a></li>
+		    <li><a href="#{request.contextPath}/pacientes.jsf">Usuarios</a></li>
+		    </ul>
+    	</rich:accordionItem>
+    </rich:accordion>
+</ui:composition>
+
+</html>
